@@ -1,0 +1,143 @@
+// --------------------
+// :: Clearfix
+// --------------------
+@mixin clearfix{
+  *zoom: 1;
+  &:after{
+    content: ' ';
+    display: block;
+    height: 0;
+    line-height: 0;
+    clear: both;
+  }
+}
+
+
+// --------------------
+// :: Shadow
+// --------------------
+@mixin box-shadow($props...){
+  -webkit-box-shadow: $props;
+  -moz-box-shadow: $props;
+  box-shadow: $props;
+}
+
+
+// --------------------
+// :: Transition
+// --------------------
+@mixin transition($props, $delay: 0s){
+-webkit-transition: $props;
+ -moz-transition: $props;
+  -ms-transition: $props;
+   -o-transition: $props;
+      transition: $props;
+-webkit-transition-delay:  $delay;
+ -moz-transition-delay:  $delay;
+  -ms-transition-delay:  $delay;
+   -o-transition-delay:  $delay;
+      transition-delay:  $delay;
+}
+
+// --------------------
+// :: Transform
+// --------------------
+@mixin transform($props, $origin: 50% 50%){
+-webkit-transform: $props;
+ -moz-transform: $props;
+  -ms-transform: $props;
+   -o-transform: $props;
+      transform: $props;
+-webkit-transform-origin: $origin;
+ -moz-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+   -o-transform-origin: $origin;
+      transform-origin: $origin;
+}
+
+// --------------------
+// :: Ocultar sin usar display: none;
+// --------------------
+@mixin hide{
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+
+// --------------------
+// :: Ocultar texto
+// --------------------
+@mixin hide_text{
+  overflow: hidden;
+  text-indent: -1000px;
+}
+
+// -----------------------------------
+// :: Hack para antialising de texto
+// -----------------------------------
+@mixin font_antialise($color: #000000, $opacity: 0.5){
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 0 1px rgba($color, $opacity);
+}
+
+// -----------------------------------
+// :: Box sizing
+// -----------------------------------
+@mixin box-sizing($props: border-box){
+  -webkit-box-sizing: $props;
+     -moz-box-sizing: $props;
+          box-sizing: $props;
+}
+
+// -----------------------------------
+// :: Background clip
+// -----------------------------------
+@mixin background-clip($props: border){
+  -moz-background-clip: $props;     /* Firefox 3.6 */
+  -webkit-background-clip: $props;  /* Safari 4? Chrome 6? */
+  background-clip: #{$props}-box;  
+}
+
+// -----------------------------------
+// :: Gradientes
+// -----------------------------------
+@mixin radial-gradient($color_start, $color_stop, $type:ellipse, $start: 0%, $stop: 100%){
+  background: $color_stop; /* Old browsers */
+  background: -moz-radial-gradient(center, $type cover,  $color_start $start, $color_stop $stop); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, $stop, color-stop($start,$color_start), color-stop($stop,$color_stop)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, $type cover,  $color_start $start,$color_stop $stop); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, $type cover,  $color_start $start,$color_stop $stop); /* Opera 12+ */
+  background: -ms-radial-gradient(center, $type cover,  $color_start $start,$color_stop $stop); /* IE10+ */
+  background: radial-gradient($type at center,  $color_start $start,$color_stop $stop); /* W3C */
+}
+@mixin linear-gradient($color_start, $color_stop){
+  background: $color_stop; /* Old browsers */
+  background: -moz-linear-gradient(top, $color_start 0%, $color_stop 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$color_start), color-stop(100%,$color_stop)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $color_start 0%,$color_stop 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $color_start 0%,$color_stop 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $color_start 0%,$color_stop 100%); /* IE10+ */
+  background: linear-gradient(to bottom, $color_start 0%,$color_stop 100%); /* W3C */
+}
+
+// -----------------------------------
+// :: Hyphens
+// -----------------------------------
+@mixin hyphens($props: auto){
+  -webkit-hyphens: $props;
+  -moz-hyphens: $props;
+  hyphens: $props;
+}
+
+// -----------------------------------
+// :: Columns
+// -----------------------------------
+@mixin column($cant, $sep){
+   -moz-column-count: $cant;
+   -moz-column-gap: $sep;
+   -webkit-column-count: $cant;
+   -webkit-column-gap: $sep;
+   column-count: $cant;
+   column-gap: $sep;
+}

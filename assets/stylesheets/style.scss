@@ -1,0 +1,128 @@
+//----------------------------------
+// Includes
+//----------------------------------
+@import 'sass_partials/mixins';
+@import 'sass_partials/reset';
+// @import 'sass_partials/normalize';
+
+$z_index_back: 10;
+$z_index_front: 30;
+$z_index_ball: 20;
+
+
+.main-wrap{
+	padding-top: 70px;
+	position: relative;
+}
+
+
+//----------------------------------
+// Box
+//----------------------------------
+#box{
+	position: relative;
+	width: 181px;
+	height: 164px;
+	margin: 0 auto 30px auto;
+}
+
+#box-front,
+#box-back{	
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	z-index: 10;
+}
+#box-front{
+	background-image: url(../images/box-front.png);
+	z-index: $z_index_front;
+}
+
+#box-back{
+	background-image: url(../images/box-back.png);
+	z-index: $z_index_back;
+}
+
+.box-open{
+	#box-front, #box-back{
+		background-position: right top;
+	}
+}
+
+.box-closed{
+	#box-front, #box-back{
+		background-position: left top;
+	}
+
+
+	-webkit-animation-name: shake;
+	-webkit-animation-duration: 0.7s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	-webkit-transform-origin: 50% 100%;
+}
+
+
+
+
+//----------------------------------
+// Paper
+//----------------------------------
+.input-add, #add-button{
+	@include box-sizing(border-box);
+	width: 200px;
+	display: block;
+	margin: 10px auto;
+	border: 0;
+	outline: 0;
+	box-shadow: 2px 2px 5px 1px rgba(#000000, 0.3);
+	padding: 15px;
+}
+#add-button{
+	display: block;
+	border: 0;
+	background: #489818;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+}
+
+#paper-roll{
+	width: 50px;
+	height: 50px;
+	background: url(../images/paper-roll.png);
+	position: absolute;
+	z-index: $z_index_ball;
+	top: -50px;
+	left: 47%;
+
+	&.drop{
+		top: 150px;
+		@include transition(top 0.6s ease-in);
+	}
+}
+
+
+
+
+
+//----------------------------------
+// Animaciones
+//----------------------------------
+$factor: 3;
+@-webkit-keyframes shake {
+  0%  { -webkit-transform:  translate(2px*$factor, 1px*$factor) rotate(0deg); }
+  10% { -webkit-transform: translate(-1px*$factor, -2px*$factor) rotate(-2deg); }
+  20% { -webkit-transform: translate(-3px*$factor, 0px*$factor) rotate(3deg); }
+  30% { -webkit-transform: translate(0px*$factor, 2px*$factor) rotate(0deg); }
+  40% { -webkit-transform: translate(1px*$factor, -1px*$factor) rotate(1deg); }
+  50% { -webkit-transform: translate(-1px*$factor, 2px*$factor) rotate(-1deg); }
+  60% { -webkit-transform: translate(-3px*$factor, 1px*$factor) rotate(0deg); }
+  70% { -webkit-transform: translate(2px*$factor, 1px*$factor) rotate(-2deg); }
+  80% { -webkit-transform: translate(-1px*$factor, -1px*$factor) rotate(4deg); }
+  90% { -webkit-transform: translate(2px*$factor, 2px*$factor) rotate(0deg); }
+  100% { -webkit-transform: translate(1px*$factor, -2px*$factor) rotate(-1deg); }
+}
