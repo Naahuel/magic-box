@@ -1,4 +1,13 @@
 (function(the_window){
+  // Wait for Cordova to load
+  //
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+  // Cordova is ready
+  //
+  function onDeviceReady() {
+      // Empty
+  }
 
 	// Variables
 	var o_caja = document.getElementById("box");
@@ -18,6 +27,7 @@
 
 			// Verifico que haya al menos 2 opciones
 			if(opciones.length < 2){
+				navigator.notification.vibrate(2000);
 				navigator.notification.alert(
 				    'Salame!',
 				    function(){},
@@ -41,6 +51,7 @@
 
 			// Mostrar opcion al azar
 			the_window.setTimeout(function(){
+				navigator.notification.vibrate(2000);
 				navigator.notification.alert(
 				    'Su elección al azar es:',
 				    function(){},
