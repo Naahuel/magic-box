@@ -18,7 +18,12 @@
 
 			// Verifico que haya al menos 2 opciones
 			if(opciones.length < 2){
-				alert('Ingresá otra opción, GIL');
+				navigator.notification.alert(
+				    'Salame!',
+				    function(){},
+				    'Sólo ingresaste una opción',
+				    'Aceptar'
+				);
 				return;
 			}
 			
@@ -35,7 +40,14 @@
 			o_add_button.disabled = false;
 
 			// Mostrar opcion al azar
-			alert(opciones[Math.floor(Math.random() * opciones.length)]);
+			the_window.setTimeout(function(){
+				navigator.notification.alert(
+				    'Su elección al azar es:',
+				    function(){},
+				    opciones[Math.floor(Math.random() * opciones.length)],
+				    'Bueno'
+				);
+			}, 600);
 
 		}
 
