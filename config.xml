@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+    xmlns:gap   = "http://phonegap.com/ns/1.0"
+    id          = "com.nahuel.magic-box"
+    versionCode = "10"
+    version     = "1.0.0" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Magic Box</name>
+
+    <description>
+        Para las desiciones dificiles
+    </description>
+
+    <author href="http://www.nahueljose.com.ar" email="nahuel@nahueljose.com.ar">
+        Nahuel José
+    </author>
+
+    <icon src="icon.png" />
+
+</widget>
