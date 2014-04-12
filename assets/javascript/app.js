@@ -5,6 +5,8 @@
 	var o_add_button = document.getElementById("add-button");
 	var o_add_input = document.getElementById("add-input");
 	var o_paper_roll = document.getElementById("paper-roll");
+	var o_count = document.getElementById("count");
+	var o_empty_box = document.getElementById("empty-box");
 	var curr_state = 'box-open';
 	var opciones = [];
 
@@ -18,7 +20,7 @@
 
 			// Verifico que haya al menos 2 opciones
 			if(opciones.length < 2){
-				alert('Sólo ingresaste una opción, SALAME!');
+				alert('Tenés que ingresar al menos 2 opciones');
 				return;
 			}
 			
@@ -37,13 +39,13 @@
 			// Mostrar opcion al azar
 			the_window.setTimeout(function(){
 				alert(opciones[Math.floor(Math.random() * opciones.length)]);
-			}, 600);
+			}, 100);
 
 		}
 
 	});
 
-	// Al hacerle click en el boton
+	// Al hacerle click en el boton de agregar
 	o_add_button.addEventListener('click', function(){
 
 		// Chequear si se escribio algo
@@ -53,6 +55,9 @@
 		// Agregar opcion
 		opciones.push(o_add_input.value);
 
+		// Incrementar contador
+		o_count.innerHTML = opciones.length;
+
 		// Meter el papel
 		o_paper_roll.className = 'drop';
 		o_add_input.value = '';
@@ -61,6 +66,17 @@
 		the_window.setTimeout(function(){
 			o_paper_roll.className = '';
 		}, 600);
+
+	});
+
+	// Al hacerle click en el boton de vaciar
+	o_empty_box.addEventListener('click', function(){
+
+		// Vaciar opciones
+		opciones = [];
+
+		// Incrementar contador
+		o_count.innerHTML = opciones.length;
 
 	});
 
