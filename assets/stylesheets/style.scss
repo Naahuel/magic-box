@@ -77,8 +77,10 @@ $z_index_ball: 20;
 	margin: 10px auto;
 	border: 0;
 	outline: 0;
-	box-shadow: 2px 2px 5px 1px rgba(#000000, 0.3);
 	padding: 15px;
+}
+.input-add{
+	border: 2px solid #CCCCCC;
 }
 #add-button{
 	display: block;
