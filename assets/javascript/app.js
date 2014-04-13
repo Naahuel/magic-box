@@ -1,20 +1,20 @@
 (function(the_window){
 
 	// Variables
-	var o_caja = document.getElementById("box");
-	var o_add_button = document.getElementById("add-button");
-	var o_add_input = document.getElementById("add-input");
-	var o_paper_roll = document.getElementById("paper-roll");
-	var o_count = document.getElementById("count");
-	var o_empty_box = document.getElementById("empty-box");
+	var o_caja = $("#box");
+	var o_add_button = $("#add-button");
+	var o_add_input = $("#add-input");
+	var o_paper_roll = $("#paper-roll");
+	var o_count = $("#count");
+	var o_empty_box = $("#empty-box");
 	var curr_state = 'box-open';
 	var opciones = [];
 
 	// Estado inicial
-	o_caja.className = curr_state;
+	o_caja.attr('class', curr_state);
 
 	// Al hacerle click en la caja, cambiar la clase
-	o_caja.addEventListener('click', function(){
+	o_caja.on('click', function(){
 
 		if(curr_state == 'box-open'){
 
@@ -25,14 +25,14 @@
 			}
 			
 			// La caja está abierta, cerrarla
-			o_caja.className = 'box-closed';
+			o_caja.attr('class', 'box-closed');
 			curr_state = 'box-closed';
 			o_add_button.disabled = true;
 
 		} else {
 
 			// La caja está cerrada, abrirla y mostrar seleccion al azar
-			o_caja.className = 'box-open';
+			o_caja.attr('class', 'box-open');
 			curr_state = 'box-open';
 			o_add_button.disabled = false;
 
@@ -46,37 +46,37 @@
 	});
 
 	// Al hacerle click en el boton de agregar
-	o_add_button.addEventListener('click', function(){
+	o_add_button.on('click', function(){
 
 		// Chequear si se escribio algo
-		if(!o_add_input.value)
+		if(!o_add_input.val())
 			return;
 
 		// Agregar opcion
-		opciones.push(o_add_input.value);
+		opciones.push(o_add_input.val());
 
 		// Incrementar contador
-		o_count.innerHTML = opciones.length;
+		o_count.html(opciones.length);
 
 		// Meter el papel
-		o_paper_roll.className = 'drop';
-		o_add_input.value = '';
+		o_paper_roll.attr('class', 'drop');
+		o_add_input.val('');
 		
 		// Subir el papel nuevamente al terminar animacion
 		the_window.setTimeout(function(){
-			o_paper_roll.className = '';
+			o_paper_roll.attr('class', '');
 		}, 600);
 
 	});
 
 	// Al hacerle click en el boton de vaciar
-	o_empty_box.addEventListener('click', function(){
+	o_empty_box.on('click', function(){
 
 		// Vaciar opciones
 		opciones = [];
 
 		// Incrementar contador
-		o_count.innerHTML = opciones.length;
+		o_count.html(opciones.length);
 
 	});
 
