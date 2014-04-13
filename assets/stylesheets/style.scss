@@ -20,6 +20,7 @@ $z_index_ball: 20;
 // Box
 //----------------------------------
 #box{
+	@include transition(all 0.2s ease-out);
 	position: relative;
 	width: 181px;
 	height: 164px;
@@ -57,13 +58,21 @@ $z_index_ball: 20;
 	}
 
 
-	-webkit-animation-name: shake;
+	-webkit-animation-name: animation-shake;
 	-webkit-animation-duration: 0.7s;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
 	-webkit-transform-origin: 50% 100%;
 }
 
+
+.box-empty{
+
+	-webkit-animation-name: animation-empty;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+}
 
 
 
@@ -104,6 +113,23 @@ $z_index_ball: 20;
 	&.drop{
 		top: 150px;
 		@include transition(top 0.6s ease-in);
+	}
+}
+#paper-roll-multiple{
+	width: 81px;
+	height: 69px;
+	background: url(../images/paper-roll-multiple.png);
+	position: absolute;
+	z-index: $z_index_ball;
+	top: 80px;
+	left: 54px;
+	opacity: 1;
+
+	&.drop{
+		@include transition(all 0.6s ease-in, 0.4s);
+		opacity: 0;
+		top: -150px;
+		left: 0px;
 	}
 }
 
@@ -152,17 +178,28 @@ $z_index_ball: 20;
 //----------------------------------
 // Animaciones
 //----------------------------------
-$factor: 3;
-@-webkit-keyframes shake {
-  0%  { -webkit-transform:  translate(2px*$factor, 1px*$factor) rotate(0deg); }
-  10% { -webkit-transform: translate(-1px*$factor, -2px*$factor) rotate(-2deg); }
-  20% { -webkit-transform: translate(-3px*$factor, 0px*$factor) rotate(3deg); }
-  30% { -webkit-transform: translate(0px*$factor, 2px*$factor) rotate(0deg); }
-  40% { -webkit-transform: translate(1px*$factor, -1px*$factor) rotate(1deg); }
-  50% { -webkit-transform: translate(-1px*$factor, 2px*$factor) rotate(-1deg); }
-  60% { -webkit-transform: translate(-3px*$factor, 1px*$factor) rotate(0deg); }
-  70% { -webkit-transform: translate(2px*$factor, 1px*$factor) rotate(-2deg); }
-  80% { -webkit-transform: translate(-1px*$factor, -1px*$factor) rotate(4deg); }
-  90% { -webkit-transform: translate(2px*$factor, 2px*$factor) rotate(0deg); }
-  100% { -webkit-transform: translate(1px*$factor, -2px*$factor) rotate(-1deg); }
+$factor_1: 3;
+@-webkit-keyframes animation-shake {
+  0%  { -webkit-transform:  translate(2px*$factor_1, 1px*$factor_1) rotate(0deg); }
+  10% { -webkit-transform: translate(-1px*$factor_1, -2px*$factor_1) rotate(-2deg); }
+  20% { -webkit-transform: translate(-3px*$factor_1, 0px*$factor_1) rotate(3deg); }
+  30% { -webkit-transform: translate(0px*$factor_1, 2px*$factor_1) rotate(0deg); }
+  40% { -webkit-transform: translate(1px*$factor_1, -1px*$factor_1) rotate(1deg); }
+  50% { -webkit-transform: translate(-1px*$factor_1, 2px*$factor_1) rotate(-1deg); }
+  60% { -webkit-transform: translate(-3px*$factor_1, 1px*$factor_1) rotate(0deg); }
+  70% { -webkit-transform: translate(2px*$factor_1, 1px*$factor_1) rotate(-2deg); }
+  80% { -webkit-transform: translate(-1px*$factor_1, -1px*$factor_1) rotate(4deg); }
+  90% { -webkit-transform: translate(2px*$factor_1, 2px*$factor_1) rotate(0deg); }
+  100% { -webkit-transform: translate(1px*$factor_1, -2px*$factor_1) rotate(-1deg); }
+}
+
+@-webkit-keyframes animation-empty {
+  0%  { -webkit-transform:  translate(0, 0) rotate(0deg); }
+  20% { -webkit-transform: translate(0, -40px) rotate(-150deg); }
+  25% { -webkit-transform: translate(0, -50px) rotate(-150deg); }
+  30% { -webkit-transform: translate(0, -40px) rotate(-150deg); }
+  35% { -webkit-transform: translate(0, -50px) rotate(-150deg); }
+  40% { -webkit-transform: translate(0, -40px) rotate(-150deg); }
+  80% { -webkit-transform: translate(0, -40px) rotate(-150deg); }
+  100% { -webkit-transform: translate(0, 0) rotate(0); }
 }

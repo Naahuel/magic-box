@@ -5,6 +5,7 @@
 	var o_add_button = $("#add-button");
 	var o_add_input = $("#add-input");
 	var o_paper_roll = $("#paper-roll");
+	var o_paper_roll_multiple = $("#paper-roll-multiple");
 	var o_count = $("#count");
 	var o_empty_box = $("#empty-box");
 	var curr_state = 'box-open';
@@ -75,8 +76,14 @@
 		// Vaciar opciones
 		opciones = [];
 
-		// Incrementar contador
-		o_count.html(opciones.length);
+		// Poner clase de vaciado
+		o_caja.addClass('box-empty');
+		o_paper_roll_multiple.addClass('drop');
+		the_window.setTimeout(function(){
+			o_caja.removeClass('box-empty');
+			o_paper_roll_multiple.removeClass('drop');
+			o_count.html(opciones.length);
+		}, 1500);
 
 	});
 
